@@ -18,16 +18,16 @@ const Signup = () => {
         e.preventDefault();
 
         // Chairman verification
-        if (formData.role === 'chairman') {
-            if (
-                formData.name.toLowerCase() !== 'raghavi' ||
-                formData.email.toLowerCase() !== 'raghavi@gmail.com' ||
-                formData.phone !== '7896541235'
-            ) {
-                toast.error('Invalid chairman credentials. Please contact the administrator.');
-                return;
-            }
-        }
+        // if (formData.role === 'chairman') {
+        //     if (
+        //         formData.name.toLowerCase() !== 'raghavi' ||
+        //         formData.email.toLowerCase() !== 'raghavi@gmail.com' ||
+        //         formData.phone !== '7896541235'
+        //     ) {
+        //         toast.error('Invalid chairman credentials. Please contact the administrator.');
+        //         return;
+        //     }
+        // }
 
         try {
             await axios.post('http://localhost:5000/api/auth/signup', formData);
@@ -193,3 +193,4 @@ const Signup = () => {
 };
 
 export default Signup;
+
