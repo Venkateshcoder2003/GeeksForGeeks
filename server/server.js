@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 
 const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
+const recruitmentUrlRoutes = require('./routes/recruitmentUrl'); // Correct import path
 
 dotenv.config();
 
@@ -22,8 +23,8 @@ mongoose.connect(process.env.MONGODB_URI)
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
+app.use('/api/recruitment-url', recruitmentUrlRoutes);
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-

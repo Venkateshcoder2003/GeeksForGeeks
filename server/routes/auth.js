@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { validateSignup, validateLogin } = require('../middleware/validation');
 
+const RecruitmentUrl = require('../models/UrlSchema')
+
 // Signup route
 router.post('/signup', validateSignup, async (req, res) => {
     try {
@@ -55,6 +57,56 @@ router.post('/login', validateLogin, async (req, res) => {
                 res.json({ token, role: user.role });
             }
         );
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Get current recruitment URL
+router.get('/', async (req, res) => {
+    try {
+        // Fetch the most recent recruitment URL
+        const recruitmentUrl = await RecruitmentUrl.findOne().sort({ createdAt: -1 });
+
+        // If no recruitment URL is found, return a 404
+        if (!recruitmentUrl) {
+            return res.status(404).json({ message: 'No recruitment URL found' });
+        }
+
+        res.json(recruitmentUrl);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Create or update recruitment URL (only for chairman)
+router.post('/', async (req, res) => {
+    try {
+        // Check if the user is authorized (chairman only)
+        if (req.user.role !== 'chairman') {
+            return res.status(403).json({ message: 'Not authorized' });
+        }
+
+        const { url, description } = req.body;
+
+        // Validate inputs
+        if (!url) {
+            return res.status(400).json({ message: 'URL is required' });
+        }
+
+        // Create a new recruitment URL document
+        const newRecruitmentUrl = new RecruitmentUrl({
+            url,
+            description: description || '',
+            createdBy: req.user.id
+        });
+
+        // Save the new recruitment URL
+        const recruitmentUrl = await newRecruitmentUrl.save();
+
+        res.status(201).json(recruitmentUrl);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' });
