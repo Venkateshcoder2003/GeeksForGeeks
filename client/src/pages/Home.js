@@ -19,7 +19,7 @@ export default function Home() {
 
     const fetchRecruitmentUrl = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/recruitment-url');
+            const response = await axios.get('server2-delta-plum.vercel.app/api/recruitment-url');
             setRecruitmentDetails(response.data);
         } catch (error) {
             toast.error('Failed to fetch recruitment details');

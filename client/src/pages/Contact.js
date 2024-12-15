@@ -205,7 +205,7 @@ export default function Contact() {
         setIsSubmitting(true);
         try {
             // Send email using EmailJS
-            const response = await axios.post('http://localhost:5000/api/mailpath/send-email', formData);
+            const response = await axios.post('server2-delta-plum.vercel.app/api/mailpath/send-email', formData);
 
             // Success handling
             toast.success('Thank you for your message. We will get back to you soon!');

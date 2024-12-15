@@ -2,11 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
-const authRoutes = require('./routes/auth');
-const eventRoutes = require('./routes/events');
-const recruitmentUrlRoutes = require('./routes/recruitmentUrl'); // Correct import path
-const mailpath = require('./routes/mailPath');
+const authRoutes = require('./routes/auth.js');
+const eventRoutes = require('./routes/events.js');
+const recruitmentUrlRoutes = require('./routes/recruitmentUrl.js'); // Correct import path
+const mailpath = require('./routes/mailPath.js');
 
 dotenv.config();
 
