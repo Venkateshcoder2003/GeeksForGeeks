@@ -16,7 +16,7 @@ const Events = ({ userRole }) => {
     const fetchEvents = async () => {
         try {
             setIsLoading(true);
-            const response = await axios.get('server2-delta-plum.vercel.app/api/events');
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/events`);
             setEvents(response.data);
             setError(null);
         } catch (error) {

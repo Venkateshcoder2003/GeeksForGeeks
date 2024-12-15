@@ -29,7 +29,7 @@ const Dashboard = () => {
 
     const fetchEvents = async () => {
         try {
-            const response = await axios.get('server2-delta-plum.vercel.app/api/events');
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/events`);
             setEvents(response.data);
         } catch (error) {
             toast.error('Failed to fetch events');
@@ -38,7 +38,7 @@ const Dashboard = () => {
 
     const fetchRecruitmentUrl = async () => {
         try {
-            const response = await axios.get('server2-delta-plum.vercel.app/api/recruitment-url');
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/recruitment-url`);
             setCurrentRecruitment(response.data);
         } catch (error) {
             toast.error('Failed to fetch recruitment details');
@@ -55,7 +55,7 @@ const Dashboard = () => {
     const handleRecruitmentFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('server2-delta-plum.vercel.app/api/recruitment-url',
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/recruitment-url`,
                 recruitmentForm,
                 { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
             );
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
     const handleDeleteRecruitmentUrl = async () => {
         try {
-            await axios.delete(`server2-delta-plum.vercel.app/api/recruitment-url/${currentRecruitment._id}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/recruitment-url/${currentRecruitment._id}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
             toast.success('Recruitment URL deleted successfully');
@@ -86,7 +86,7 @@ const Dashboard = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('server2-delta-plum.vercel.app/api/events', newEvent, {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/events`, newEvent, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
             toast.success('Event created successfully');
@@ -106,7 +106,7 @@ const Dashboard = () => {
 
     const handleDeleteEvent = async (eventId) => {
         try {
-            await axios.delete(`server2-delta-plum.vercel.app/api/events/${eventId}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/events/${eventId}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
             toast.success('Event deleted successfully');

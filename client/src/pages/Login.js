@@ -16,7 +16,7 @@ const Login = ({ setIsLoggedIn, setUserRole }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('server2-delta-plum.vercel.app/api/auth/login', formData);
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, formData);
             localStorage.setItem('token', response.data.token);
             setIsLoggedIn(true);
             setUserRole(response.data.role);

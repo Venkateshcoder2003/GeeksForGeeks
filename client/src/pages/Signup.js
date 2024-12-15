@@ -329,7 +329,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('server2-delta-plum.vercel.app/api/auth/signup', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
