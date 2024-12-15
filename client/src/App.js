@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Events from './pages/Events';
 import Dashboard from './pages/Dashboard';
 import Alumni from './pages/Alumni';
+import Contact from './pages/Contact'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +34,9 @@ function App() {
               element={<Login setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} />}
             />
             <Route path="/events" element={<Events userRole={userRole} />} />
-            <Route path='alumni' element={<Alumni />} />
+            <Route path="/events" element={<Events userRole={userRole} />} />
+            <Route path='/alumni' element={<Alumni />} />
+            <Route path='/contact' element={<Contact />} />
             <Route
               path="/dashboard"
               element={isLoggedIn && userRole === 'chairman' ? <Dashboard /> : <Login setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole} />}

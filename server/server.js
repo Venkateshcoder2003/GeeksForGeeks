@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
 const recruitmentUrlRoutes = require('./routes/recruitmentUrl'); // Correct import path
+const mailpath = require('./routes/mailPath');
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const app = express();
 
 // Middleware
 app.use(cors());
+
 app.use(express.json());
 
 // Connect to MongoDB
@@ -24,6 +26,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/recruitment-url', recruitmentUrlRoutes);
+app.use('/api/mailpath', mailpath)
 
 const PORT = process.env.PORT || 5000;
 

@@ -75,6 +75,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X, Code2 } from 'lucide-react';
 
+
 const Navbar = ({ isLoggedIn, userRole, logout }) => {
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -101,6 +102,7 @@ const Navbar = ({ isLoggedIn, userRole, logout }) => {
                     <div className="hidden md:flex items-center space-x-6">
                         <Link to="/events" className="nav-link">Events</Link>
                         <Link to="/alumni" className="nav-link">Alumni</Link>
+                        <Link to="/contact" className="nav-link">Contact</Link>
                         {isLoggedIn ? (
                             <>
                                 {userRole === 'chairman' && (
@@ -190,6 +192,7 @@ const Navbar = ({ isLoggedIn, userRole, logout }) => {
                                 </Link>
                             </>
                         )}
+
                     </div>
                 </div>
             </div>

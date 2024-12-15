@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
+
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { validateSignup, validateLogin } = require('../middleware/validation');
 
 const RecruitmentUrl = require('../models/UrlSchema')
 
-// Signup route
 router.post('/signup', validateSignup, async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
@@ -62,6 +62,7 @@ router.post('/login', validateLogin, async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 // Get current recruitment URL
 router.get('/', async (req, res) => {

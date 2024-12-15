@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { defaultMaxListeners } = require('ws');
 
 const EventSchema = new mongoose.Schema({
     title: {
@@ -23,7 +24,7 @@ const EventSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: true,
+        default: 'https://th.bing.com/th/id/OIP.yHL6oC9WwNXkcwfq1zotcQHaHa?rs=1&pid=ImgDetMain'
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
