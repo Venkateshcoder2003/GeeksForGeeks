@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { defaultMaxListeners } = require('ws');
+
 
 const EventSchema = new mongoose.Schema({
     title: {
