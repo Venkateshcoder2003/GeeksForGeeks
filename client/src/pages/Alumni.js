@@ -127,34 +127,6 @@ const alumniData = [
 
 ];
 
-// const Alumni = () => {
-//     return (
-//         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-//             <div className="max-w-7xl mx-auto">
-//                 <div className="text-center mb-12">
-//                     <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-//                         Our Distinguished Alumni
-//                     </h1>
-//                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-//                         Meet our successful graduates who are making their mark in the tech industry
-//                         and inspiring the next generation of developers.
-//                     </p>
-//                 </div>
-
-//                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-//                     {alumniData.map((alumni, index) => (
-//                         <AlumniCard key={index} {...alumni} />
-//                     ))}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Alumni;
-
-
-
 const Alumni = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 py-12 px-4 sm:px-6 lg:px-8">

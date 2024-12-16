@@ -16,11 +16,18 @@ const Login = ({ setIsLoggedIn, setUserRole }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, formData);
+            const response = await axios.post("http://localhost:5000/api/auth/login", formData);
             localStorage.setItem('token', response.data.token);
             setIsLoggedIn(true);
             setUserRole(response.data.role);
-            toast.success('Login successful!');
+            toast.success('Login successful!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+            });
             navigate('/');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Login failed');

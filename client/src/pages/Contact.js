@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'react-toastify';
 import axios from 'axios'
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ export default function Contact() {
         setIsSubmitting(true);
         try {
             // Send email using EmailJS
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/mailpath/send-email`, formData);
+            const response = await axios.post(`http://localhost:5000/api/mailpath/send-email`, formData);
 
             // Success handling
             toast.success('Thank you for your message. We will get back to you soon!');

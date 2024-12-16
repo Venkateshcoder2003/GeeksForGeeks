@@ -10,6 +10,7 @@ const RecruitmentUrl = require('../models/UrlSchema')
 router.post('/signup', validateSignup, async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
+        console.log(req.body);
 
         let user = await User.findOne({ email });
         if (user) {
@@ -30,6 +31,7 @@ router.post('/signup', validateSignup, async (req, res) => {
 router.post('/login', validateLogin, async (req, res) => {
     try {
         const { email, password } = req.body;
+        console.log(req.body)
 
         const user = await User.findOne({ email });
         if (!user) {
