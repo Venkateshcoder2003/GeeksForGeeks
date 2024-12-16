@@ -290,7 +290,7 @@ const ADMIN_CREDENTIALS = [
     },
     {
         name: "Raghavi M",
-        email: "raghavi@gmail.com",
+        email: "raghaviiiiim@gmail.com",
         mobile: "7899123195"
     }
 ];
